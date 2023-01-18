@@ -1,0 +1,244 @@
+//+------------------------------------------------------------------+
+//|                                         Chats Moving average.mq4 |
+//|                                              Surfing the FX Wave |
+//|                                             https://www.mql5.com |
+//+------------------------------------------------------------------+
+#property indicator_chart_window
+#property indicator_buffers 1
+#property indicator_color1 Blue
+#property indicator_plots   1
+#property indicator_type1 DRAW_LINE
+#property indicator_label1 "My Moving Average"
+#property indicator_width1 2
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+double maBuffer[];
+
+int OnInit()
+{
+    ArraySetAsSeries(maBuffer, true);
+    ArrayResize(maBuffer, RatesTotal());
+    return(INIT_SUCCEEDED);
+}
+
+  
+//+------------------------------------------------------------------+
+//| Custom indicator iteration function                              |
+//+------------------------------------------------------------------+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime& time[],
+                const double& open[],
+                const double& high[],
+                const double& low[],
+                
+                
+                
+                
+                
+                Can you teach me step by step mql4 language / coding starting with an example of your choice and what I need to know from start to finish. 
+Sure, I'll give you a step-by-step guide on how to start coding in MQL4, starting with a simple example of creating an indicator that plots a moving average on the chart.
+
+You will need to have the MetaTrader 4 (MT4) platform installed on your computer. You can download it from the website of a Forex broker that supports the platform.
+
+Once you have MT4 installed, open it and go to the "Navigator" window, which is located at the bottom of the screen.
+
+In the Navigator window, go to the "Custom Indicators" folder.
+
+Right-click on the "Custom Indicators" folder and select "New."
+
+A new window will open where you can start coding your indicator. The first thing you will need to do is to specify the properties of the indicator, such as its name, description, and number of buffers. Here's an example of how you can set these properties:
+
+Copy code
+#property indicator_chart_window
+#property indicator_buffers 1
+#property indicator_color1 Blue
+#property indicator_plots   1
+#property indicator_type1 DRAW_LINE
+#property indicator_label1 "My Moving Average"
+#property indicator_width1 2
+Next, you will need to create an "OnInit" function. This function is called when the indicator is first loaded and it's used to initialize the indicator's settings. Here's an example of how you can create
+
+
+Okay, It's done, lets go to next step . 
+Sure, next step is to create the arrays that will store the data for your indicator. In this case, we'll create a single array that will store the moving average values. You can create the array in the OnInit function, like this:
+
+Copy code
+double maBuffer[];
+
+int OnInit()
+{
+    ArraySetAsSeries(maBuffer, true);
+    ArrayResize(maBuffer, RatesTotal());
+    return(INIT_SUCCEEDED);
+}
+This code creates an array called "maBuffer" and sets its size to match the number of bars in the chart. The ArraySetAsSeries function is used to specify that the array should be treated as a series of values, and the ArrayResize function is used to set the size of the array.
+
+Next, you will need to calculate the moving average values in the "OnCalculate" function. This function is called each time new price data is available, and it's used to update the indicator's values. Here's an example of how you can calculate a simple moving average in the OnCalculate function:
+Copy code
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime& time[],
+                const double& open[],
+                const double& high[],
+                const double& low[],
+                const double& close[],
+                const long& tick_volume[],
+                const long& volume[],
+                const int& spread[])
+{
+    int i, counted_bars=IndicatorCounted();
+    if(counted_
+
+
+I did that but I get errors. Do you reccomend a brilliant image to text app on the web?. I would like to take a copy and show you the line code and error.
+I understand that you are encountering errors with the code you've written. Unfortunately, I am a text-based AI and I do not have the capability to see images or screenshots. However, I can still help you troubleshoot the issues with your code.
+
+You can use an online code editor like Replit or CodePen, or a code sharing platform like GitHub Gist or Pastebin where you can share the code and the error message with me.
+
+As for an OCR(Optical Character Recognition) image to text app, there are several options available online such as Google Drive, Adobe Acrobat, Microsoft Office, and ABBYY. Some are paid and some are free, you can try them and choose the one that best suits your needs.
+
+Please let me know if you have any other questions or issues. I'll be happy to help you out.
+
+
+
+Okay . have Git hub . Here is the code . Can you point out what needs to be corrected?. //+------------------------------------------------------------------+
+//|                                         Chats Moving average.mq4 |
+//|                                              Surfing the FX Wave |
+//|                                             https://www.mql5.com |
+//+------------------------------------------------------------------+
+#property indicator_chart_window
+#property indicator_buffers 1
+#property indicator_color1 Blue
+#property indicator_plots   1
+#property indicator_type1 DRAW_LINE
+#property indicator_label1 "My Moving Average"
+#property indicator_width1 2
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+double maBuffer[];
+
+int OnInit()
+{
+    ArraySetAsSeries(maBuffer, true);
+    ArrayResize(maBuffer, RatesTotal());
+    return(INIT_SUCCEEDED);
+}
+
+  
+//+------------------------------------------------------------------+
+//| Custom indicator iteration function                              |
+//+------------------------------------------------------------------+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime& time[],
+                const double& open[],
+                const double& high[],
+                const double& low[],
+                const double& close[],
+                const long& tick_volume[],
+                const long& volume[],
+                const int& spread[])
+{
+    int i, counted_bars=IndicatorCounted();
+    if(counted_
+
+
+
+
+//+------------------------------------------------------------------+
+It looks like the code you've provided is missing the calculation for the moving average. You need to specify the type of moving average you want to use (e.g. simple moving average, exponential moving average, etc.) and the period for the moving average.
+
+Here's an example of how you can calculate a simple moving average with a period of 20 in the OnCalculate function:
+
+Copy code
+int period = 20;
+double ma;
+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime& time[],
+                const double& open[],
+                const double& high[],
+                const double& low[],
+                const double& close[],
+                const long& tick_volume[],
+                const long& volume[],
+                const int& spread[])
+{
+    int i, counted_bars=IndicatorCounted();
+    if(counted_bars<0) return(0);
+    if(counted_bars>0) counted_bars--;
+
+    for(i=0; i<counted_bars; i++)
+    {
+        ma = iMA(NULL, 0, period, 0, MODE_SMA, PRICE_CLOSE, i);
+        maBuffer[i] = ma;
+    }
+    return(rates_total);
+}
+You need to have the iMA function to calculate the moving average. This function calculates the specified moving average of the specified symbol over a specified period. The function has multiple parameters that you can use to specify the type of moving average, the price mode, and the shift of the moving average.
+
+You might also want to make sure that the code you're using is written for the version of MQL4 that you are using.
+
+Please let me know if you have any other questions or issues. I'll be happy to help you out.
+
+
+
+Okay , that's good . Only have one code error which states Rates total not defined under Custom indicator initialization function ....ArrayResize(maBuffer, RatesTotal());     Is incorrect , can we fix it?. 
+Yes, the error message you're getting is because the "RatesTotal()" function is not defined in the "OnInit()" function.
+
+The "RatesTotal()" function is used to get the number of bars on the chart and it should be used in the "OnCalculate()" function, not the "OnInit()" function.
+
+Here's an example of how you can fix the code in the "OnInit()" function:
+
+Copy code
+int OnInit()
+{
+    ArraySetAsSeries(maBuffer, true);
+    ArrayResize(maBuffer, 100);
+    return(INIT_SUCCEEDED);
+}
+This code creates an array called "maBuffer" and sets its size to 100. You can replace 100 with any value that you think is suitable for your strategy.
+
+In the OnCalculate function, you can use the function CopyBuffer() to copy the buffer with the moving average values from the indicator to the array. The first parameter of the function is the index of the buffer you want to copy, the second parameter is the starting position in the buffer, the third parameter is the pointer to the array, and the fourth parameter is the number of elements to copy.
+
+Copy code
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime& time[],
+                const double& open[],
+                const double& high[],
+                const double& low[],
+                const double& close[],
+                const long& tick_volume[],
+                const long& volume[],
+                const int& spread[])
+{
+    int i, counted_bars=IndicatorCounted();
+    if(counted_bars<0) return(0);
+    if(counted_bars>0) counted_bars--;
+
+    for(i=0; i<counted_bars; i++)
+    {
+        ma = iMA(NULL, 0, period, 0, MODE_SMA, PRICE
+
+
+Okay . Lets continue tomorrow with this chat lesson . 
+                
+                const double& close[],
+                const long& tick_volume[],
+                const long& volume[],
+                const int& spread[])
+{
+    int i, counted_bars=IndicatorCounted();
+    if(counted_
+
+
+
+
+//+------------------------------------------------------------------+
