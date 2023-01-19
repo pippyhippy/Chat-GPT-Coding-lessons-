@@ -238,7 +238,7 @@ Okay . Lets continue tomorrow with this chat lesson .
     int i, counted_bars=IndicatorCounted();
     if(counted_
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 Here I ask Chat some question about repainting bars and how to solve getting repeating notifications .
 
 I can see whats happening. This is a histogram with colored bars. As the bar passes over the set level to give an alert, it toggles up and down with the price in the price chart . Therefore it is sending to many notifications to my MT4 app on my mobile. Is there code to use so i get only one notification when the histogram bar first touches the level line ?   
@@ -267,5 +267,5 @@ By using this approach, you will only receive one notification when the histogra
 It's important to note that this is just one possible solution and you may need to adjust the code to fit your specific use case.
 
 Please let me know if you have any further questions.
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 //+------------------------------------------------------------------+
