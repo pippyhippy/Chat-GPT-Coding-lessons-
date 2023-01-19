@@ -239,6 +239,33 @@ Okay . Lets continue tomorrow with this chat lesson .
     if(counted_
 
 
+Here I ask Chat some question about repainting bars and how to solve getting repeating notifications .
 
+I can see whats happening. This is a histogram with colored bars. As the bar passes over the set level to give an alert, it toggles up and down with the price in the price chart . Therefore it is sending to many notifications to my MT4 app on my mobile. Is there code to use so i get only one notification when the histogram bar first touches the level line ?   
+It sounds like the issue is that the indicator is sending multiple notifications when the histogram bar is crossing the set level. To avoid this and only get one notification when the histogram bar first touches the level line, you can use a flag variable that keeps track of whether the level has been crossed or not.
+
+Here is an example of how you can implement this:
+
+Create a flag variable called crossed and initialize it to false in the OnInit() function.
+Copy code
+bool crossed = false;
+In your main logic, check if the histogram bar is crossing the set level and whether the flag variable is false. If the histogram bar is crossing the set level and the flag variable is false, send the notification and set the flag variable to true.
+Copy code
+if (histogram_bar > set_level && !crossed)
+{
+    SendNotification("Histogram bar has crossed the set level");
+    crossed = true;
+}
+Check if the histogram bar is crossing back below the set level, if so set the flag variable to false so that the next time the histogram bar crosses the set level, the indicator will be able to send the notification again.
+Copy code
+if (histogram_bar < set_level)
+{
+    crossed = false;
+}
+By using this approach, you will only receive one notification when the histogram bar first crosses the set level, and the indicator will not send any further notifications until the histogram bar crosses back below the set level.
+
+It's important to note that this is just one possible solution and you may need to adjust the code to fit your specific use case.
+
+Please let me know if you have any further questions.
 
 //+------------------------------------------------------------------+
